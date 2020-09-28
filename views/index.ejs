@@ -1,0 +1,24 @@
+<%-include('./partials/headNav')%>
+
+
+<section id="all-movies">
+    <% data.results.forEach(elt => { %>
+    <article>
+        <a href="/details/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%= elt.poster_path %>" alt=""></a>
+        <a href="/details/<%= elt.id %>"> <%= elt.title %> </a>
+    </article>
+    <% }) %>
+</section>
+
+<!-- pagination -->
+<footer>
+     <% for (let index = 1; index < 16; index++) { %>
+        <div>
+             <a class="btn-page" href="/page/<%= index %>"><%= index %></a>
+        </div>
+    <% } %>
+</footer>
+  
+</body>
+
+</html>
