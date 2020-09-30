@@ -2,7 +2,7 @@
 
 
 <section id="all-movies">
-    <% data.results.forEach(elt => { %>
+    <% data.forEach(elt => { %>
     <article>
         <a href="/details/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%= elt.poster_path %>" alt=""></a>
         <a href="/details/<%= elt.id %>"> <%= elt.title %> </a>

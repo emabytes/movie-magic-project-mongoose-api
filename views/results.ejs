@@ -1,0 +1,19 @@
+<%-include('./partials/headNav')%>
+
+
+<section id="results">
+    <% data.forEach(elt => { %>
+    <article>
+        <% if(elt.poster_path !== undefined){ %>
+        <a href="/details/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%=elt.poster_path %>" alt=""></a>
+        <% } else { %>
+        <a href="/details/<%= elt.id %>"><img src="/empty.png" alt=""></a>
+        <% } %>
+
+        <a href="/details/<%= elt.id %>"> <%= elt.title || elt.name %> </a>
+    </article>
+    <% }) %>
+</section>
+</body>
+
+</html>

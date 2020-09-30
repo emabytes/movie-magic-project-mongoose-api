@@ -1,6 +1,6 @@
 <%-include('./partials/headNav')%>
 
-<section id="details">
+<section id="fav-details">
     <div class="flex">
         <div class="rating">
             <h2><i class="fas fa-star"></i> <%= movieDetails.vote_average %>/10</h2>
@@ -22,8 +22,7 @@
                 <h4>Plot Summary</h4>
                 <p><%=movieDetails.overview%></p>
             </div>
-            <a class="addFav" href="/addFav/<%= movieDetails.id %>"><i class="fas fa-plus-circle"></i> Add to favourites</a>
-           
+            <a class="addFav" href="/removeFav/<%= movieDetails.id %>"><i class="fas fa-minus-circle"></i> Remove from favorites</a>
         </div>
     </div>
 </section>

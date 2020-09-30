@@ -53,22 +53,24 @@ nav button {
   border: none;
   cursor: pointer;
 }
-#all-movies {
+#all-movies, #favs, #results {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 }
-#all-movies img {
+#all-movies img, #favs img, #results img {
   width: 100%;
+  height: 60vh;
+  object-fit: cover;
   border-radius: 10px;
 }
-#all-movies article a {
+#all-movies article a, #favs article a, #results article a {
   font-weight: 400;
   font-size: 1.1em;
   color: white;
 }
-#details {
+#details, #fav-details {
   color: white;
   padding: 8em 10%;
 }
@@ -76,21 +78,25 @@ nav button {
   color: gold;
   font-size: 1.5em;
 }
-#details ul {
+#details ul, #fav-details ul {
   list-style: none;
   display: flex;
   padding: 1em 0;
 }
-#details ul li {
+#details ul li, #fav-details ul li {
   margin: 0 0.2em;
   padding: 0.2em 0.5em;
   border: 1px solid white;
   border-radius: 10px;
   font-weight: 200;
 }
-#details img {
+#details img, #fav-details img {
   width: 100%;
   border-radius: 20px;
+}
+.addFav {
+  color: white;
+  font-size: 1.3em;
 }
 .flex {
   display: flex;

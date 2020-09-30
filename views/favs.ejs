@@ -1,0 +1,14 @@
+<%-include('./partials/headNav')%>
+
+<section id="favs">
+    <% data.forEach(elt => { %>
+    <article>
+        <a href="/favs/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%= elt.poster_path %>" alt=""></a>
+        <a href="/favs/<%= elt.id %>"> <%= elt.title %> </a>
+    </article>
+    <% }) %>
+</section>
+  
+</body>
+
+</html>
