@@ -4,13 +4,15 @@
 <section id="results">
     <% data.forEach(elt => { %>
     <article>
-        <% if(elt.poster_path !== undefined){ %>
+        <% if(elt.poster_path !== null){ %>
         <a href="/details/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%=elt.poster_path %>" alt=""></a>
         <% } else { %>
-        <a href="/details/<%= elt.id %>"><img src="/empty.png" alt=""></a>
+        <a href="/details/<%= elt.id %>">
+            <img src="/empty.png" alt="">
+        </a>
         <% } %>
 
-        <a href="/details/<%= elt.id %>"> <%= elt.title || elt.name %> </a>
+        <a class="title-link" href="/details/<%= elt.id %>"> <%= elt.title || elt.name %> </a>
     </article>
     <% }) %>
 </section>

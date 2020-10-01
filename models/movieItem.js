@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const movieItemSchema = new Schema({
     title: {
         type: String,
-        // required: true
+        required: true
     },
     backdrop_path: {
         type: String,
@@ -13,27 +13,27 @@ const movieItemSchema = new Schema({
     },
     poster_path: {
         type: String,
-        // required: true
+        required: true
     },
     release_date: {
         type: String,
-        // required: true
+        required: true
     },
     status: {
         type: String,
-        // required: true
+        required: true
     },
     vote_average: {
         type: Number,
-        // required: true
+        required: true
     }, 
     genres: {
         type: Array,
-        // required: true
+        required: true
     },
     overview: {
         type: String,
-        // required: true
+        required: true
     }
 })
 

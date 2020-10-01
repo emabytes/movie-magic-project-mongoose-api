@@ -5,24 +5,27 @@
         <div class="rating">
             <h2><i class="fas fa-star"></i> <%= movieDetails.vote_average %>/10</h2>
         </div>
-        <img src="https://image.tmdb.org/t/p/w500/<%= movieDetails.backdrop_path %>" alt=""></img>
+        <img src="https://image.tmdb.org/t/p/w500/<%= movieDetails.poster_path %>" alt=""></img>
         <div class="info">
             <div>
                 <h1> <%=movieDetails.title%> </h1>
-                <h5> <%=movieDetails.release_date%> 
-                <span><%=movieDetails.status%> </span>
+                <h5> <%=movieDetails.release_date%>
+                    <span><%=movieDetails.status%> </span>
                 </h5>
+                <% if(movieDetails.genres !== null || movieDetails.genres !== undefined){ %>
                 <ul>
                     <% movieDetails.genres.forEach(element => { %>
                     <li><%=element.name%></li>
                     <% }); %>
                 </ul>
+                <% } %>
             </div>
             <div>
                 <h4>Plot Summary</h4>
                 <p><%=movieDetails.overview%></p>
             </div>
-            <a class="addFav" href="/removeFav/<%= movieDetails.id %>"><i class="fas fa-minus-circle"></i> Remove from favorites</a>
+            <a class="addFav" href="/removeFav/<%= movieDetails.id %>"><i class="fas fa-minus-circle"></i> Remove from
+                favorites</a>
         </div>
     </div>
 </section>

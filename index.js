@@ -23,14 +23,19 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
         // .catch(err => console.log(err))
     })
 
-let data = []
 
+let data = []
+let pageNumber = 1
 app.get("/", (req, res) => {
+
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`)
         .then(res => res.json())
         .then(json => {
             // console.log(json)
-            res.render("index", { data: json.results })
+
+
+            res.render("index", { data: json.results, pageNumber: pageNumber })
+
         });
 })
 
@@ -39,7 +44,11 @@ app.get("/page/:id", (req, res) => {
         .then(res => res.json())
         .then(json => {
             // console.log(json)
-            res.render("index", { data: json.results })
+
+            if (req.params.id > 500 - 15) {
+                req.params.id = 486
+            }
+            res.render("index", { data: json.results, pageNumber: req.params.id })
         });
 })
 
@@ -61,8 +70,14 @@ app.get("/search/:query/:page", (req, res) => {
     fetch(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&query=${req.params.query}&page=${req.params.page}&include_adult=false`)
         .then(res => res.json())
         .then(json => {
-            console.log(json)
-            res.render("results", { data: json.results })
+            //console.log(json)
+            let newData = json.results.filter(elt => {
+                if (("genre_ids" in elt)) {
+                    return elt
+                }
+            })
+            console.log(newData)
+            res.render("results", { data: newData })
         })
         .catch(err => console.log('The error while searching movies occurred: ', err))
 })
@@ -79,16 +94,21 @@ app.get("/addFav/:id", (req, res) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+
+
+
+
             const newFav = new movieItem({
                 title: data.title,
                 backdrop_path: data.backdrop_path,
                 poster_path: data.poster_path,
                 release_date: data.release_date,
                 status: data.status,
-                vote_count: data.vote_count,
+                vote_average: data.vote_average,
                 genres: data.genres,
                 overview: data.overview,
             })
+
             newFav.save()
                 .then(result => {
                     console.log("saved to db")
@@ -96,6 +116,7 @@ app.get("/addFav/:id", (req, res) => {
                 })
                 .catch(err => console.log(err))
         });
+
 });
 
 app.get("/favs/:id", (req, res) => {
@@ -109,7 +130,6 @@ app.get("/favs/:id", (req, res) => {
 app.get("/removeFav/:id", (req, res) => {
     movieItem.findByIdAndDelete(req.params.id)
         .then(result => {
-            // res.render('favDetails', { movieDetails: result })
             res.redirect("/favs")
         })
         .catch(err => console.log(err))
