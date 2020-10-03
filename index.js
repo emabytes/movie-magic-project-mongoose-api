@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const fetch = require("node-fetch")
 const movieItem = require('./models/movieItem');
 
-
 app.use(express.static('public'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,9 +19,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
         app.listen(PORT, () => {
             console.log("server listening at http://localhost:3113")
         })
-        // .catch(err => console.log(err))
+        .catch(err => console.log(err))
     })
-
 
 let data = []
 let pageNumber = 1
@@ -32,8 +30,6 @@ app.get("/", (req, res) => {
         .then(res => res.json())
         .then(json => {
             // console.log(json)
-
-
             res.render("index", { data: json.results, pageNumber: pageNumber })
 
         });
@@ -44,9 +40,8 @@ app.get("/page/:id", (req, res) => {
         .then(res => res.json())
         .then(json => {
             // console.log(json)
-
-            if (req.params.id > 500 - 15) {
-                req.params.id = 486
+            if (req.params.id > 500) {
+                req.params.id = 500
             }
             res.render("index", { data: json.results, pageNumber: req.params.id })
         });
@@ -93,11 +88,7 @@ app.get("/addFav/:id", (req, res) => {
     fetch(`https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-
-
-
-
+            // console.log(data)
             const newFav = new movieItem({
                 title: data.title,
                 backdrop_path: data.backdrop_path,

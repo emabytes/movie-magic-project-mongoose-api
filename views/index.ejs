@@ -1,6 +1,5 @@
 <%-include('./partials/headNav')%>
 
-
 <section id="all-movies">
     <% data.forEach(elt => { %>
     <article>
@@ -12,26 +11,24 @@
 
 <!-- pagination -->
 <footer>
-    <% if (pageNumber>15) { %>
-    <% for (let index = pageNumber-1; index < (pageNumber*1)+15; index++) { %>
-    <div>
-        <a class="btn-page" href="/page/<%= index %>"><%= index %></a>
-    </div>
-    <% } %>
-
-    <% } else if(pageNumber<=15){ %>
-        <% for (let index=pageNumber-1; index < (pageNumber*1)+15 ; index++) { %>
+    <% if(pageNumber <= 8){ %>
+        <% for (let index=1; index <= 15 ; index++) { %>
+        <div>
+            <a class="btn-page" href="/page/<%= index %>"><%= index %></a>
+        </div>
+        <% }%>
+    <% } else { %>
+        <% if (pageNumber >= 493) { %>
+            <% pageNumber = 493 %>
+        <% } %>
+        <% let start = (pageNumber*1) - 7; %>
+        <% let end = (pageNumber*1) + 7; %>
+        <% for (let index = start; index <= end; index++) { %>
             <div>
                 <a class="btn-page" href="/page/<%= index %>"><%= index %></a>
             </div>
-
-    <% } } else { %>
-    <% for (let index = pageNumber; index < (pageNumber*1)+15; index++) { %>
-    <div>
-        <a class="btn-page" href="/page/<%= index %>"><%= index %></a>
-    </div>
+        <% } %>
     <% } %>
-    <% }%>
 </footer>
 
 </body>
