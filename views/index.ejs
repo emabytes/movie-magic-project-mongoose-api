@@ -1,6 +1,9 @@
 <%-include('./partials/headNav')%>
 
-<section id="all-movies">
+<section id="all-movies" 
+data-sal="slide-up"
+  data-sal-delay="300"
+  data-sal-easing="ease-out-back">
     <% data.forEach(elt => { %>
     <article>
         <a href="/details/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%= elt.poster_path %>" alt=""></a>
@@ -30,6 +33,8 @@
         <% } %>
     <% } %>
 </footer>
+
+
 
 </body>
 

@@ -6,6 +6,7 @@ const app = express()
 const mongoose = require('mongoose');
 const fetch = require("node-fetch")
 const movieItem = require('./models/movieItem');
+const sal = require('sal.js')
 
 app.use(express.static('public'))
 app.use(express.json());
@@ -19,7 +20,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
         app.listen(PORT, () => {
             console.log("server listening at http://localhost:3113")
         })
-        .catch(err => console.log(err))
+        // .catch(err => console.log(err))
     })
 
 let data = []

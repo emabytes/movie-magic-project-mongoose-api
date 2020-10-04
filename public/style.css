@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@700&display=swap");
+@import "./node_modules/sal.js/dist/sal.css";
 
 * {
   padding: 0;
@@ -198,6 +199,11 @@ input {
   border-bottom-right-radius: 20px;
   border-top-left-radius: 20px;
 }
+.rating h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  font-family: "Yanone Kaffeesatz", sans-serif;
+}
 .addFav {
   font-size: 1.5em;
   transition: all 0.5s;
@@ -230,8 +236,22 @@ footer {
 .btn-page:hover {
   transform: scale(1.09);
 }
-.active {
-  background: black;
-  color: white;
-  border: 1px solid white;
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #all-movies,
+  #favs,
+  #results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  #all-movies,
+  #favs,
+  #results {
+    grid-template-columns: 1fr;
+  } 
+   nav {
+    flex-direction: column;
+    align-items: center;
+  }
 }
