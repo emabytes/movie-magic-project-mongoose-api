@@ -6,7 +6,6 @@ const app = express()
 const mongoose = require('mongoose');
 const fetch = require("node-fetch")
 const movieItem = require('./models/movieItem');
-const sal = require('sal.js')
 
 app.use(express.static('public'))
 app.use(express.json());
@@ -20,7 +19,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
         app.listen(PORT, () => {
             console.log("server listening at http://localhost:3113")
         })
-        // .catch(err => console.log(err))
+        .catch(err => console.log(err))
     })
 
 let data = []
@@ -32,7 +31,6 @@ app.get("/", (req, res) => {
         .then(json => {
             // console.log(json)
             res.render("index", { data: json.results, pageNumber: pageNumber })
-
         });
 })
 
@@ -100,7 +98,6 @@ app.get("/addFav/:id", (req, res) => {
                 genres: data.genres,
                 overview: data.overview,
             })
-
             newFav.save()
                 .then(result => {
                     console.log("saved to db")
