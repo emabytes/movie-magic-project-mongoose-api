@@ -31,7 +31,8 @@ app.get("/", (req, res) => {
         .then(json => {
             // console.log(json)
             res.render("index", { data: json.results, pageNumber: pageNumber })
-        });
+        })
+    .catch(err=>console.log(err))
 })
 
 app.get("/page/:id", (req, res) => {
@@ -43,7 +44,8 @@ app.get("/page/:id", (req, res) => {
                 req.params.id = 500
             }
             res.render("index", { data: json.results, pageNumber: req.params.id })
-        });
+        })
+        .catch(err=>console.log(err))
 })
 
 app.get("/details/:id", (req, res) => {
@@ -52,7 +54,8 @@ app.get("/details/:id", (req, res) => {
         .then(json => {
             // console.log(json)
             res.render("details", { movieDetails: json })
-        });
+        })
+        .catch(err=>console.log(err))
 })
 
 app.post("/search", (req, res) => {
@@ -81,6 +84,7 @@ app.get("/favs", (req, res) => {
         .then((result) => {
             res.render("favs", { data: result })
         })
+        .catch(err=>console.log(err))
 })
 
 app.get("/addFav/:id", (req, res) => {
@@ -104,7 +108,8 @@ app.get("/addFav/:id", (req, res) => {
                     res.redirect("/favs")
                 })
                 .catch(err => console.log(err))
-        });
+        })
+        .catch(err=>console.log(err))
 
 });
 
