@@ -104,28 +104,33 @@ input {
   text-align: center;
   padding: 0 2em;
 }
+#all-movies .img-wrap,
+#favs .img-wrap,
+#results .img-wrap {
+  transition: transform 0.5s, opacity 0.5s;
+}
 #all-movies img,
 #favs img,
 #results img {
   width: 100%;
-  height: 60vh;
-  margin-bottom: 0.2em;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 15px 40px -4px rgba(0, 0, 0, 0.9);
-  transition: all 0.3s linear;
 }
-#all-movies img:hover,
-#favs img:hover,
-#results img:hover {
+#all-movies .img-wrap:hover,
+#favs .img-wrap:hover,
+#results .img-wrap:hover {
   opacity: 0.5;
   transform: scale(1.02);
+}
+.title-wrap {
+  margin: 1em 0;
 }
 .title-link {
   font-weight: 400;
   font-size: 1.1em;
   color: white;
-  transition: opacity 0.4s linear;
+  transition: opacity 0.5s;
 }
 .title-link:hover {
   opacity: 0.5;
@@ -133,7 +138,10 @@ input {
 #details,
 #fav-details {
   color: white;
-  padding: 0.5em 10%;
+  padding: 0.5em 20%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
 }
 .fa-star {
   color: gold;
@@ -163,11 +171,11 @@ input {
   color: white;
   font-size: 1.3em;
 }
-.flex {
+/* .flex {
   display: flex;
-}
+} */
 .info {
-  padding: 0 5%;
+  /* padding: 0 5%; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -249,8 +257,8 @@ footer {
   #favs,
   #results {
     grid-template-columns: 1fr;
-  } 
-   nav {
+  }
+  nav {
     flex-direction: column;
     align-items: center;
   }

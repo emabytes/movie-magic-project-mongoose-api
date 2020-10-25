@@ -3,12 +3,16 @@
 <section id="favs">
     <% data.forEach(elt => { %>
     <article>
-        <a href="/favs/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%= elt.poster_path %>" alt=""></a>
-        <a class="title-link" href="/favs/<%= elt.id %>"> <%= elt.title %> </a>
+        <div class="img-wrap">
+            <a href="/favs/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%= elt.poster_path %>" alt=""></a>
+        </div>
+        <div class="title-wrap">
+            <a class="title-link" href="/favs/<%= elt.id %>"> <%= elt.title %> </a>
+        </div>
     </article>
     <% }) %>
 </section>
-  
+
 </body>
 
 </html>

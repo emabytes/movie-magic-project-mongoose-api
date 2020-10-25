@@ -6,6 +6,7 @@
             <h2><i class="fas fa-star"></i> <%= movieDetails.vote_average %>/10</h2>
         </div>
         <img src="https://image.tmdb.org/t/p/w500/<%= movieDetails.poster_path %>" alt=""></img>
+    </div>
         <div class="info">
             <div>
                 <h1> <%=movieDetails.title%> </h1>
@@ -27,7 +28,6 @@
             <a class="addFav" href="/removeFav/<%= movieDetails.id %>"><i class="fas fa-minus-circle"></i> Remove from
                 favorites</a>
         </div>
-    </div>
 </section>
 </body>
 

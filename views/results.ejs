@@ -5,14 +5,18 @@
     <% data.forEach(elt => { %>
     <article>
         <% if(elt.poster_path !== null){ %>
-        <a href="/details/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%=elt.poster_path %>" alt=""></a>
+        <div class="img-wrap">
+            <a href="/details/<%= elt.id %>"><img src="https://image.tmdb.org/t/p/w500/<%=elt.poster_path %>"
+                    alt=""></a>
+        </div>
         <% } else { %>
         <a href="/details/<%= elt.id %>">
             <img src="/empty.png" alt="">
         </a>
         <% } %>
-
-        <a class="title-link" href="/details/<%= elt.id %>"> <%= elt.title || elt.name %> </a>
+        <div class="title-wrap">
+            <a class="title-link" href="/details/<%= elt.id %>"> <%= elt.title || elt.name %> </a>
+        </div>
     </article>
     <% }) %>
 </section>

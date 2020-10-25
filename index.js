@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { render } = require('ejs');
 const express = require('express');
-const PORT = process.env.PORT || 3113;
+const PORT = process.env.PORT || 3003;
 const app = express()
 const mongoose = require('mongoose');
 const fetch = require("node-fetch")
@@ -17,7 +17,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
         console.log("connected to db")
         app.listen(PORT, () => {
-            console.log("server listening at http://localhost:3113")
+            console.log("server listening at http://localhost:3003")
         })
         .catch(err => console.log(err))
     })
